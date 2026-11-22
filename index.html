@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f1f7f8">
+    <meta name="description" content="MediScan AI research demonstration for skin lesion image classification.">
+    <title>MediScan AI | Research intake</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="MediScan AI home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M16 5v22M5 16h22" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="brand-name">MediScan <span>AI</span></span>
+        </a>
+        <div class="topbar-meta">
+          <span class="secure-label"><span class="secure-dot"></span> Local research demo</span>
+          <span class="topbar-divider" aria-hidden="true"></span>
+          <span class="topbar-caption">Not for clinical use</span>
+        </div>
+      </header>
+
+      <main>
+        <section class="page-intro">
+          <div class="intro-copy">
+            <p class="eyebrow">SKIN LESION IMAGE CLASSIFICATION</p>
+            <h1>Research intake<span class="title-period">.</span></h1>
+            <p>Complete this sample form to explore the MediScan AI workflow. Your details stay in this browser; the model only accepts an image.</p>
+          </div>
+          <div class="intro-badge" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <path d="M24 5 9 11v11c0 10 6.4 17.1 15 21 8.6-3.9 15-11 15-21V11L24 5Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+              <path d="M24 15v17M15.5 23.5h17" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </section>
+
+        <div class="privacy-banner" role="note">
+          <span class="banner-icon" aria-hidden="true">!</span>
+          <p><strong>Research demo only — do not enter real patient information.</strong> Name, contact, and health details are validated in your browser and are never submitted or saved. If you choose an image, only that image is sent to the local MediScan API; PDF reports stay on this device. No provider or medical-record system is connected.</p>
+        </div>
+
+        <form id="intake-form" novalidate>
+          <section class="form-card" aria-labelledby="patient-heading">
+            <div class="card-heading">
+              <span class="section-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.7"/>
+                  <path d="M5 20c.4-3.3 3.2-5.3 7-5.3s6.6 2 7 5.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <div>
+                <p class="section-kicker">01 / BASIC INFORMATION</p>
+                <h2 id="patient-heading">Patient details</h2>
+              </div>
+            </div>
+            <div class="field-grid">
+              <div class="field">
+                <label for="patient-name">Patient name <span class="required-mark">*</span></label>
+                <input class="form-control" id="patient-name" name="patient_name" type="text" autocomplete="off" maxlength="100" placeholder="Enter full name" required aria-describedby="patient-name-error">
+                <span class="field-error" id="patient-name-error"></span>
+              </div>
+              <div class="field">
+                <label for="patient-age">Age <span class="required-mark">*</span></label>
+                <div class="input-with-suffix">
+                  <input class="form-control" id="patient-age" name="age" type="number" inputmode="numeric" min="1" max="120" step="1" placeholder="e.g. 34" required aria-describedby="patient-age-hint patient-age-error">
+                  <span class="input-suffix">years</span>
+                </div>
+                <span class="field-hint" id="patient-age-hint">Enter a whole number from 1 to 120.</span>
+                <span class="field-error" id="patient-age-error"></span>
+              </div>
+              <div class="field">
+                <label for="patient-gender">Gender <span class="required-mark">*</span></label>
+                <select class="form-control" id="patient-gender" name="gender" required aria-describedby="patient-gender-error">
+                  <option value="">Select an option</option>
+                  <option value="female">Female</option>
+                  <option value="male">Male</option>
+                  <option value="non-binary">Non-binary</option>
+                  <option value="other">Another identity</option>
+                  <option value="prefer-not-to-say">Prefer not to say</option>
+                </select>
+                <span class="field-error" id="patient-gender-error"></span>
+              </div>
+              <div class="field">
+                <label for="patient-email">Email address <span class="required-mark">*</span></label>
+                <input class="form-control" id="patient-email" name="email" type="email" inputmode="email" autocomplete="off" maxlength="254" placeholder="name@example.com" required aria-describedby="patient-email-error">
+                <span class="field-error" id="patient-email-error"></span>
+              </div>
+              <div class="field">
+                <label for="patient-phone">Phone number <span class="required-mark">*</span></label>
+                <input class="form-control" id="patient-phone" name="phone" type="tel" inputmode="tel" autocomplete="off" maxlength="25" placeholder="+1 555 123 4567" required aria-describedby="patient-phone-hint patient-phone-error">
+                <span class="field-hint" id="patient-phone-hint">Include your country code when possible.</span>
+                <span class="field-error" id="patient-phone-error"></span>
+              </div>
+            </div>
+          </section>
+
+          <section class="form-card" aria-labelledby="symptoms-heading">
+            <div class="card-heading">
+              <span class="section-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M3 12h4l2.2-6 4.1 12 2.2-6H21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div>
+                <p class="section-kicker">02 / REPORTED CONCERNS</p>
+                <h2 id="symptoms-heading">Symptoms &amp; history</h2>
+              </div>
+            </div>
+            <div class="field-grid">
+              <div class="field field-span">
+                <label for="symptoms">Medical symptoms <span class="required-mark">*</span></label>
+                <textarea class="form-control" id="symptoms" name="symptoms" rows="3" maxlength="1200" placeholder="Describe the concern for this demo. Enter “None” if there are no symptoms." required aria-describedby="symptoms-hint symptoms-error"></textarea>
+                <span class="field-hint" id="symptoms-hint">This information is not sent to or used by the image model.</span>
+                <span class="field-error" id="symptoms-error"></span>
+              </div>
+              <div class="field">
+                <label for="symptom-duration">Duration of symptoms <span class="required-mark">*</span></label>
+                <select class="form-control" id="symptom-duration" name="symptom_duration" required aria-describedby="symptom-duration-error">
+                  <option value="">Select a duration</option>
+                  <option value="under-1-week">Less than 1 week</option>
+                  <option value="1-4-weeks">1–4 weeks</option>
+                  <option value="1-6-months">1–6 months</option>
+                  <option value="over-6-months">More than 6 months</option>
+                  <option value="unknown">Not sure</option>
+                </select>
+                <span class="field-error" id="symptom-duration-error"></span>
+              </div>
+              <div class="field">
+                <label for="conditions">Existing medical conditions <span class="required-mark">*</span></label>
+                <textarea class="form-control" id="conditions" name="conditions" rows="3" maxlength="1000" placeholder="List conditions, or enter “None”." required aria-describedby="conditions-error"></textarea>
+                <span class="field-error" id="conditions-error"></span>
+              </div>
+              <div class="field">
+                <label for="medications">Current medications <span class="required-mark">*</span></label>
+                <textarea class="form-control" id="medications" name="medications" rows="3" maxlength="1000" placeholder="List medications, or enter “None”." required aria-describedby="medications-error"></textarea>
+                <span class="field-error" id="medications-error"></span>
+              </div>
+              <div class="field">
+                <label for="allergies">Allergies <span class="required-mark">*</span></label>
+                <textarea class="form-control" id="allergies" name="allergies" rows="3" maxlength="1000" placeholder="List allergies, or enter “None”." required aria-describedby="allergies-error"></textarea>
+                <span class="field-error" id="allergies-error"></span>
+              </div>
+            </div>
+          </section>
+
+          <section class="form-card" aria-labelledby="measurements-heading">
+            <div class="card-heading">
+              <span class="section-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.64 5.64l2.12 2.12m8.48 8.48 2.12 2.12m0-12.72-2.12 2.12m-8.48 8.48-2.12 2.12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                  <circle cx="12" cy="12" r="6" stroke="currentColor" stroke-width="1.7"/>
+                </svg>
+              </span>
+              <div>
+                <p class="section-kicker">03 / OPTIONAL</p>
+                <h2 id="measurements-heading">Measurements</h2>
+              </div>
+            </div>
+            <div class="field-grid field-grid-measurements">
+              <div class="field">
+                <label for="blood-pressure">Blood pressure</label>
+                <div class="input-with-suffix">
+                  <input class="form-control" id="blood-pressure" name="blood_pressure" type="text" inputmode="text" maxlength="7" placeholder="e.g. 120/80" aria-describedby="blood-pressure-hint blood-pressure-error">
+                  <span class="input-suffix">mmHg</span>
+                </div>
+                <span class="field-hint" id="blood-pressure-hint">Optional format: systolic/diastolic.</span>
+                <span class="field-error" id="blood-pressure-error"></span>
+              </div>
+              <div class="field">
+                <label for="temperature">Body temperature</label>
+                <div class="input-with-suffix">
+                  <input class="form-control" id="temperature" name="temperature" type="number" inputmode="decimal" min="30" max="45" step="0.1" placeholder="e.g. 36.8" aria-describedby="temperature-hint temperature-error">
+                  <span class="input-suffix">°C</span>
+                </div>
+                <span class="field-hint" id="temperature-hint">Optional; enter a value from 30 to 45 °C.</span>
+                <span class="field-error" id="temperature-error"></span>
+              </div>
+            </div>
+          </section>
+
+          <section class="form-card" aria-labelledby="attachment-heading">
+            <div class="card-heading">
+              <span class="section-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14v5h14v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div>
+                <p class="section-kicker">04 / OPTIONAL ATTACHMENT</p>
+                <h2 id="attachment-heading">Medical report or image</h2>
+              </div>
+            </div>
+            <div class="upload-area" id="dropzone">
+              <input id="attachment" name="attachment" type="file" accept=".jpg,.jpeg,.png,.webp,.pdf,image/jpeg,image/png,image/webp,application/pdf" aria-describedby="attachment-hint attachment-error">
+              <label class="upload-label" for="attachment">
+                <span class="upload-symbol" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14v5h14v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span class="upload-text"><strong>Choose a file</strong> or drag it here</span>
+                <span class="upload-subtext">JPG, PNG, WebP or PDF · maximum 10 MB</span>
+              </label>
+              <div class="file-preview" id="file-preview" hidden>
+                <img id="image-preview" alt="Selected image preview" hidden>
+                <span class="file-chip" id="file-chip" aria-hidden="true">PDF</span>
+                <span class="selected-file-name" id="selected-file-name"></span>
+                <button class="remove-file" id="remove-file" type="button" aria-label="Remove selected file">Remove</button>
+              </div>
+              <span class="field-hint" id="attachment-hint">Images may be sent to the local CNN; PDF reports remain on this device and are not analyzed.</span>
+              <span class="field-error" id="attachment-error"></span>
+            </div>
+          </section>
+
+          <div class="form-actions">
+            <div class="action-note"><span class="required-mark">*</span> Required fields</div>
+            <div class="action-buttons">
+              <button class="button button-quiet" id="cancel-button" type="button">Cancel</button>
+              <button class="button button-outline" type="reset">Reset</button>
+              <button class="button button-primary" id="submit-button" type="submit">
+                <span>Submit</span>
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="form-status" id="form-status" role="status" aria-live="polite" hidden></div>
+        </form>
+
+        <section class="results-card" id="results" aria-labelledby="results-heading" hidden>
+          <div class="results-heading">
+            <div>
+              <p class="section-kicker">MODEL OUTPUT</p>
+              <h2 id="results-heading">Category scores</h2>
+            </div>
+            <span class="research-tag">Unvalidated demo</span>
+          </div>
+          <ol id="prediction-list"></ol>
+          <p class="result-notice"></p>
+        </section>
+
+        <aside class="clinical-notice">
+          <span class="notice-symbol" aria-hidden="true">i</span>
+          <p><strong>For research and education only.</strong> This prototype has not been validated for clinical use. It cannot diagnose, rule out, or treat a condition. Do not delay care or make health decisions based on this demo; consult a qualified healthcare professional about skin changes or concerns.</p>
+        </aside>
+      </main>
+
+      <footer class="page-footer">
+        <span>MediScan AI <span aria-hidden="true">·</span> Research prototype</span>
+        <span>Local demo; no medical records are created.</span>
+      </footer>
+    </div>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
